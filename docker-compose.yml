@@ -1,4 +1,13 @@
 services:
+  backend-tests:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jogo-baralho-tests
+    entrypoint: ["dotnet", "test"]
+    networks:
+      - jogo-network
+
   backend:
     build:
       context: ./backend
@@ -6,6 +15,9 @@ services:
     container_name: jogodebaralho-backend
     ports:
       - "5000:8080"
+    depends_on:
+      backend-tests:
+        condition: service_completed_successfully
     networks:
       - jogo-network
 

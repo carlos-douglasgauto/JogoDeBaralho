@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using backend.Models;   
 using backend.Clients;
+using backend.Models;
 
 namespace backend.Services
 {
     public class JogoService
     {
-        private readonly DeckClient _client;
+        private readonly DeckOfCardsClient _client;
 
-        public JogoService(DeckClient client)
+        public JogoService(DeckOfCardsClient client)
         {
             _client = client;
         }
