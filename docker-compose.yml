@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jogodebaralho-backend
+    ports:
+      - "5000:8080"
+    networks:
+      - jogo-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jogodebaralho-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - jogo-network
+
+networks:
+  jogo-network:
+    driver: bridge
